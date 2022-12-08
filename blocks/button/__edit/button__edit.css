@@ -1,0 +1,10 @@
+.button__edit {
+    background-image: url(../../../images/profile/EditButton.png);
+    background-repeat: no-repeat;
+    border: 1px solid white;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    padding: 0;
+    margin: 0 0 34px 0;
+}
