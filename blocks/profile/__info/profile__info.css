@@ -5,3 +5,10 @@
     flex-direction: row;
     max-width: 556px;
 }
+
+@media screen and (max-width: 920px) {
+    .profile__info {
+        flex-direction: column;
+        align-items: center;
+    }
+}

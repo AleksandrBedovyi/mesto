@@ -1,9 +1,20 @@
 .button__add {
-    background-image: url(../../../images/profile/AddButton.svg);
+    background-image: url(../../../images/button/addButton.png);
+    background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid white;
+    border: 2px solid #FFFFFF;
     height: 50px;
     width: 150px;
     padding: 0;
     cursor: pointer;
+}
+
+.button__add:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 920px) {
+    .button__add{
+        width: 280px;
+    }
 }
