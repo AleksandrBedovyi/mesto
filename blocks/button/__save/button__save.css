@@ -1,0 +1,20 @@
+.button__save {
+    height: 50px;
+    width: 358px;
+    border-radius: 2px;
+    background-color: black;
+    margin-top: 48px;
+    margin-right: 36px;
+    margin-left: 36px;
+    margin-bottom: 37px;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.button__save:hover {
+    opacity: 0.8;
+}

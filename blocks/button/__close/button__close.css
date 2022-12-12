@@ -1,0 +1,18 @@
+.button__close {
+    background-image: url(../../../images/button/closeButton.png);
+    height: 32px;
+    width: 32px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    border: 0;
+    top: 155px;
+    right: 385px;
+    bottom: 553px;
+    left: 863px;
+    cursor: pointer;
+}
+
+.button__close:hover{
+    opacity: 0.8;
+}
