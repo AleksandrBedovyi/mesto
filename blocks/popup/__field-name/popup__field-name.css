@@ -10,3 +10,12 @@
     border-left-width: 0px;
     border-bottom-width: 1px;
 }
+
+@media screen and (max-width: 600px) {
+    .popup__field-name {
+        max-width: 238px;
+        margin-top: 75px;
+        margin-right: 22px;
+        margin-left: 22px
+    }
+}

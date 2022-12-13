@@ -6,13 +6,17 @@
     background-color: transparent;
     position: absolute;
     border: 0;
-    top: 155px;
-    right: 385px;
-    bottom: 553px;
-    left: 863px;
+    top: -40px;
+    right: -40px;
     cursor: pointer;
 }
 
 .button__close:hover{
     opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+    .button__close{
+        right: -3px;
+    }
 }

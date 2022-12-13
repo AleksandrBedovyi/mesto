@@ -18,3 +18,13 @@
 .button__save:hover {
     opacity: 0.8;
 }
+
+@media screen and (max-width: 600px) {
+    .button__save {
+        max-width: 242px;
+        margin-top: 45px;
+        margin-right: 22px;
+        margin-left: 22px;
+        margin-bottom: 25px;
+    }
+}

@@ -9,3 +9,14 @@
     margin-right: 64px;
     margin-left: 36px;
 }
+
+@media screen and (max-width: 600px) {
+    .popup__header {
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 238px;
+        margin-top: 25px;
+        margin-right: 22px;
+        margin-left: 22px;
+    }
+}
