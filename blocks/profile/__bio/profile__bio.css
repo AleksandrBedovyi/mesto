@@ -5,7 +5,7 @@
 }
 
 @media screen and (max-width: 920px) {
-    .profile__bio{
+    .profile__bio {
         margin: 0;
         padding: 26px 19px 36px 19px;
     }

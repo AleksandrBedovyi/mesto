@@ -20,7 +20,7 @@ closeButton.addEventListener('click', (event) => {
 });
 
 function handleFormSubmit(evt) {
-    evt.preventDefault(); 
+    evt.preventDefault();
     let valuePopupFieldName = popupFieldName.value;
     let valuePopupFieldPosition = popupFieldPosition.value;
 

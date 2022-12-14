@@ -1,5 +1,5 @@
-.button__heart{
-    background-image: url(../../../images/elements/icon-heart.svg);
+.button__heart {
+    background-image: url(../../../images/elements/iconHeart.png);
     background-repeat: no-repeat;
     background-color: transparent;
     width: 22px;
@@ -10,5 +10,5 @@
 }
 
 .button__heart:hover {
-    opacity: 0.8;
+    opacity: .6;
 }

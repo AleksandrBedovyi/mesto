@@ -10,11 +10,11 @@
 }
 
 .button__add:hover {
-    opacity: 0.8;
+    opacity: .6;
 }
 
 @media screen and (max-width: 920px) {
-    .button__add{
+    .button__add {
         width: 280px;
     }
 }

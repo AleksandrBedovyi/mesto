@@ -1,4 +1,4 @@
-.element__name {   
+.element__name {
     margin-top: 25px;
     margin-bottom: 31px;
     font-size: 24px;
@@ -9,5 +9,5 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 190px; 
+    max-width: 190px;
 }
