@@ -1,7 +1,7 @@
-const editButton = document.querySelector('.button__edit');
+const editButton = document.querySelector('.button_edit');
 const popup = document.querySelector('.popup');
-const closeButton = document.querySelector('.button__close');
-const saveButton = document.querySelector('.button__save');
+const closeButton = document.querySelector('.button_close');
+const saveButton = document.querySelector('.button_save');
 let profileName = document.querySelector('.profile__name'); //use innerHtml to get value
 let profilePosition = document.querySelector('.profile__position'); //use innerHtml to get value
 let popupFieldName = document.querySelector('.popup__field-name');

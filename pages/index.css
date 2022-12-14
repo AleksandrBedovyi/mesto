@@ -14,11 +14,12 @@
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__name/element__name.css);
-@import url(../blocks/button/__add/button__add.css);
-@import url(../blocks/button/__edit/button__edit.css);
-@import url(../blocks/button/__heart/button__heart.css);
-@import url(../blocks/button/__save/button__save.css);
-@import url(../blocks/button/__close/button__close.css);
+@import url(../blocks/button/button.css);
+@import url(../blocks/button/_add/button_add.css);
+@import url(../blocks/button/_close/button_close.css);
+@import url(../blocks/button/_edit/button_edit.css);
+@import url(../blocks/button/_heart/button_heart.css);
+@import url(../blocks/button/_save/button_save.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/popup/popup.css);
