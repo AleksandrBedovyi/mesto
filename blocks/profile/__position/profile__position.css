@@ -15,7 +15,8 @@
     .profile__position {
         font-size: 14px;
         line-height: 17px;
-        max-width: 282px;
+        max-width: 189px;
         text-align: center;
+        margin-left: 42px;
     }
 }

@@ -9,5 +9,6 @@
     .header {
         margin-top: 28px;
         margin-bottom: 42px;
+        max-height: 56px;
     }
 }
