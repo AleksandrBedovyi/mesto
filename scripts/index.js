@@ -2,22 +2,10 @@ const editButton = document.querySelector('.button_edit');
 const popup = document.querySelector('.popup');
 const closeButton = document.querySelector('.button_close');
 const saveButton = document.querySelector('.button_save');
-let profileName = document.querySelector('.profile__name'); //use innerHtml to get value
-let profilePosition = document.querySelector('.profile__position'); //use innerHtml to get value
-let popupFieldName = document.querySelector('.popup__field-name');
-let popupFieldPosition = document.querySelector('.popup__field-position');
-
-editButton.addEventListener('click', (event) => {
-    let valueProfileName = profileName.innerHTML;
-    let valueProfilePosition = profilePosition.innerHTML;
-    popup.classList.add('popup_opened');
-    document.querySelector('.popup__field-name').value = `${valueProfileName}`;
-    document.querySelector('.popup__field-position').value = `${valueProfilePosition}`;
-});
-
-closeButton.addEventListener('click', (event) => {
-    popup.classList.remove('popup_opened');
-});
+let profileName = document.querySelector('.profile__name');
+let profilePosition = document.querySelector('.profile__position');
+let popupFieldName = document.querySelector('.popup__field_text-name');
+let popupFieldPosition = document.querySelector('.popup__field_text-position');
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -29,3 +17,17 @@ function handleFormSubmit(evt) {
     popup.classList.remove('popup_opened');
 }
 saveButton.addEventListener('click', handleFormSubmit);
+
+editButton.addEventListener('click', (event) => {
+    let valueProfileName = profileName.innerHTML;
+    let valueProfilePosition = profilePosition.innerHTML;
+    popup.classList.add('popup_opened');
+    popupFieldName.value = `${valueProfileName}`;
+    popupFieldPosition.value = `${valueProfilePosition}`;
+});
+
+closeButton.addEventListener('click', (event) => {
+    popup.classList.remove('popup_opened');
+});
+
+

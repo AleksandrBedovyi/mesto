@@ -1,6 +1,6 @@
 .button_save {
-    height: 50px;
-    width: 358px;
+    min-height: 50px;
+    max-width: 358px;
     border-radius: 2px;
     background-color: black;
     margin-top: 48px;
@@ -15,6 +15,10 @@
     cursor: pointer;
 }
 
+.button_save:hover {
+    opacity: .8;
+}
+
 @media screen and (max-width: 600px) {
     .button_save {
         max-width: 242px;
@@ -22,5 +26,9 @@
         margin-right: 22px;
         margin-left: 22px;
         margin-bottom: 25px;
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
     }
 }
