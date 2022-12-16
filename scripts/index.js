@@ -1,11 +1,15 @@
 const editButton = document.querySelector('.button_edit');
 const popup = document.querySelector('.popup');
 const closeButton = document.querySelector('.button_close');
-const saveButton = document.querySelector('.button_save');
+const profileForm = document.querySelector('.popup__form')
 let profileName = document.querySelector('.profile__name');
 let profilePosition = document.querySelector('.profile__position');
-let popupFieldName = document.querySelector('.popup__field_text-name');
-let popupFieldPosition = document.querySelector('.popup__field_text-position');
+let popupFieldName = document.querySelector('.popup__field_user_name');
+let popupFieldPosition = document.querySelector('.popup__field_user_position');
+
+function popupClose() {
+    popup.classList.remove('popup_opened');
+}
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -14,9 +18,9 @@ function handleFormSubmit(evt) {
 
     profileName.textContent = `${valuePopupFieldName}`;
     profilePosition.textContent = `${valuePopupFieldPosition}`;
-    popup.classList.remove('popup_opened');
+    popupClose();
 }
-saveButton.addEventListener('click', handleFormSubmit);
+profileForm.addEventListener('submit', handleFormSubmit);
 
 editButton.addEventListener('click', (event) => {
     let valueProfileName = profileName.innerHTML;
@@ -26,8 +30,7 @@ editButton.addEventListener('click', (event) => {
     popupFieldPosition.value = `${valueProfilePosition}`;
 });
 
+
 closeButton.addEventListener('click', (event) => {
-    popup.classList.remove('popup_opened');
+    popupClose();
 });
-
-
