@@ -15,8 +15,10 @@
         font-size: 18px;
         line-height: 22px;
         max-width: 238px;
-        margin-top: 25px;
+        /*margin-top: 25px;
         margin-right: 22px;
-        margin-left: 22px;
+        margin-left: 22px;*/
+        padding-top: 25px;
+        margin: 0 auto;
     }
 }
