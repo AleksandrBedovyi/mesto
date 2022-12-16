@@ -1,11 +1,9 @@
 .popup__field_user_name {
-    margin-top: 54px;
+    padding-top: 54px;
 }
 
 @media screen and (max-width: 600px) {
     .popup__field_user_name {
-        /*margin-top: 75px;*/
         padding-top: 75px;
-        margin: 0 auto;
     }
 }
