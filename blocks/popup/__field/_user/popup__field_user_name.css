@@ -1,9 +1,0 @@
-.popup__field_user_name {
-    padding-top: 54px;
-}
-
-@media screen and (max-width: 600px) {
-    .popup__field_user_name {
-        padding-top: 75px;
-    }
-}

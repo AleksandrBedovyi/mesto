@@ -4,8 +4,9 @@ const closeButton = document.querySelector('.button_close');
 const profileForm = document.querySelector('.popup__form')
 let profileName = document.querySelector('.profile__name');
 let profilePosition = document.querySelector('.profile__position');
-let popupFieldName = document.querySelector('.popup__field_user_name');
-let popupFieldPosition = document.querySelector('.popup__field_user_position');
+let formElements = document.forms.editProfileForm;
+let popupFieldName = formElements.elements.popupFormTextName;
+let popupFieldPosition = formElements.elements.popupFormTextPosition;
 
 function popupClose() {
     popup.classList.remove('popup_opened');

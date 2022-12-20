@@ -14,6 +14,10 @@
     margin: 0 auto;
 }
 
+.popup__field:nth-child(even){
+    margin-top: 30px;
+}
+
 @media screen and (max-width: 600px) {
     .popup__field{
         width: 238px;
