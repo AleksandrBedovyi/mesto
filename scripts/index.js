@@ -1,3 +1,4 @@
+//Initializing variables
 const initialCards = [
     {
         name: 'Архыз',
@@ -27,10 +28,10 @@ const initialCards = [
 
 const editButton = document.querySelector('.button_edit');
 const addButton = document.querySelector('.button_add');
-const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
-const closeButton = document.querySelector('.button_close');
+const closeButtonEditForm = document.querySelector('.button_close-edit');
+const closeButtonAddForm = document.querySelector('.button_close-add');
 const profileForm = document.querySelector('.popup__form')
 let profileName = document.querySelector('.profile__name');
 let profilePosition = document.querySelector('.profile__position');
@@ -38,25 +39,23 @@ let formElements = document.forms.editProfileForm;
 let popupFieldName = formElements.elements.popupFormTextName;
 let popupFieldPosition = formElements.elements.popupFormTextPosition;
 
-function popupOpenAddForm() {
-    popupAdd.classList.add('popup_opened');
+//function which open any popup
+function popupOpen(popup) {
+    popup.classList.add('popup_opened');
 }
-
-function popupOpenEditForm() {
-    popupEdit.classList.add('popup_opened');
-}
-
-function popupClose() {
+//function which close any popup
+function popupClose(popup) {
     popup.classList.remove('popup_opened');
 }
 
+//function сhanges to profile info
 function handleFormSubmit(evt) {
     evt.preventDefault();
     let valuePopupFieldName = popupFieldName.value;
     let valuePopupFieldPosition = popupFieldPosition.value;
     profileName.textContent = `${valuePopupFieldName}`;
     profilePosition.textContent = `${valuePopupFieldPosition}`;
-    popupClose();
+    popupClose(popupEdit);
 }
 
 profileForm.addEventListener('submit', handleFormSubmit);
@@ -64,16 +63,24 @@ profileForm.addEventListener('submit', handleFormSubmit);
 editButton.addEventListener('click', (event) => {
     let valueProfileName = profileName.innerHTML;
     let valueProfilePosition = profilePosition.innerHTML;
-    popupOpenEditForm();
+    popupOpen(popupEdit);
     popupFieldName.value = `${valueProfileName}`;
     popupFieldPosition.value = `${valueProfilePosition}`;
 });
 
+//Listener of button which add a place
 addButton.addEventListener('click', (event) => {
-    popupOpenAddForm();
+    let valueInputNamePlace;
+    let valueInputLinkPlace;
+    popupOpen(popupAdd);
 });
 
-closeButton.addEventListener('click', (event) => {
-    popupClose();
+//Listener of button which close a popup_edit
+closeButtonEditForm.addEventListener('click', (event) => {
+    popupClose(popupEdit);
 });
 
+//Listener of button which close a popup_add
+closeButtonAddForm.addEventListener('click', (event) => {
+    popupClose(popupAdd);
+});
