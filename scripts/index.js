@@ -38,6 +38,13 @@ let profilePosition = document.querySelector('.profile__position');
 let formElements = document.forms.editProfileForm;
 let popupFieldName = formElements.elements.popupFormTextName;
 let popupFieldPosition = formElements.elements.popupFormTextPosition;
+const placeContainer = document.querySelector('.elements');
+const placeCard = document
+    .querySelector('.place-template')
+    .content
+    .querySelector('.element');
+//let card = placeCard.cloneNode(true);
+//console.log(card);
 
 //function which open any popup
 function popupOpen(popup) {
@@ -47,6 +54,35 @@ function popupOpen(popup) {
 function popupClose(popup) {
     popup.classList.remove('popup_opened');
 }
+
+//function create card
+function createCard(name, photo) {
+    let placeName = card.querySelector('.element__name');
+    let placePhoto = card.querySelector('.element__photo');
+    placeName.textContent = name;
+    placePhoto.setAttribute('src', photo);
+    //console.log(card);
+
+    return card;
+}
+
+//function render cards of places .elements
+function renderCards() {
+    initialCards.forEach(item => {
+        const card = placeCard.cloneNode(true);
+        let placeName = card.querySelector('.element__name');
+        let placePhoto = card.querySelector('.element__photo');
+        placeName.textContent = item.name;
+        placePhoto.setAttribute('src', item.link);
+        //let name = item.name;
+        //let photo = item.link;
+        //createCard(name, photo);
+        placeContainer.append(card);
+        console.log(card);
+    });
+}
+
+renderCards();
 
 //function сhanges to profile info
 function handleFormSubmit(evt) {
