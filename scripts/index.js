@@ -32,7 +32,8 @@ const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const closeButtonEditForm = document.querySelector('.button_close-edit');
 const closeButtonAddForm = document.querySelector('.button_close-add');
-const profileForm = document.querySelector('.popup__form')
+const profileForm = document.querySelector('.popup__form');
+const placeFormAdd = document.querySelector('.popup__form_add');
 let profileName = document.querySelector('.profile__name');
 let profilePosition = document.querySelector('.profile__position');
 let formElements = document.forms.editProfileForm;
@@ -43,8 +44,6 @@ const placeCard = document
     .querySelector('.place-template')
     .content
     .querySelector('.element');
-//let card = placeCard.cloneNode(true);
-//console.log(card);
 
 //function which open any popup
 function popupOpen(popup) {
@@ -55,13 +54,13 @@ function popupClose(popup) {
     popup.classList.remove('popup_opened');
 }
 
-//function create card
+//function create card of place
 function createCard(name, photo) {
+    const card = placeCard.cloneNode(true);
     let placeName = card.querySelector('.element__name');
     let placePhoto = card.querySelector('.element__photo');
     placeName.textContent = name;
     placePhoto.setAttribute('src', photo);
-    //console.log(card);
 
     return card;
 }
@@ -74,18 +73,14 @@ function renderCards() {
         let placePhoto = card.querySelector('.element__photo');
         placeName.textContent = item.name;
         placePhoto.setAttribute('src', item.link);
-        //let name = item.name;
-        //let photo = item.link;
-        //createCard(name, photo);
         placeContainer.append(card);
-        console.log(card);
     });
 }
 
 renderCards();
 
-//function сhanges to profile info
-function handleFormSubmit(evt) {
+//handler submit of edit form (profile form)
+function profileFormSubmit(evt) {
     evt.preventDefault();
     let valuePopupFieldName = popupFieldName.value;
     let valuePopupFieldPosition = popupFieldPosition.value;
@@ -94,7 +89,18 @@ function handleFormSubmit(evt) {
     popupClose(popupEdit);
 }
 
-profileForm.addEventListener('submit', handleFormSubmit);
+profileForm.addEventListener('submit', profileFormSubmit);
+
+function addPlaceFormSubmit(evt) {
+    evt.preventDefault();
+    let formValuePlaceName = placeFormAdd.elements.namePlace.value;
+    let formValueLinkPhoto = placeFormAdd.elements.popupAddLinkToImageOfPlace.value;
+    let card = createCard(formValuePlaceName, formValueLinkPhoto);
+    placeContainer.prepend(card);
+    popupClose(popupAdd);
+}
+
+placeFormAdd.addEventListener('submit', addPlaceFormSubmit );
 
 editButton.addEventListener('click', (event) => {
     let valueProfileName = profileName.innerHTML;
@@ -106,8 +112,6 @@ editButton.addEventListener('click', (event) => {
 
 //Listener of button which add a place
 addButton.addEventListener('click', (event) => {
-    let valueInputNamePlace;
-    let valueInputLinkPlace;
     popupOpen(popupAdd);
 });
 
