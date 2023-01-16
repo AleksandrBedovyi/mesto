@@ -28,6 +28,10 @@ const initialCards = [
 
 const editButton = document.querySelector('.button_edit');
 const addButton = document.querySelector('.button_add');
+const heartButton = document
+    .querySelector('.place-template')
+    .content
+    .querySelector('.button_heart');
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const closeButtonEditForm = document.querySelector('.button_close-edit');
@@ -44,6 +48,11 @@ const placeCard = document
     .querySelector('.place-template')
     .content
     .querySelector('.element');
+
+    //function which set liked to heart button
+function likedHeart(button) {
+    button.classList.add('button_heart_active');
+}
 
 //function which open any popup
 function popupOpen(popup) {
@@ -71,9 +80,18 @@ function renderCards() {
         const card = placeCard.cloneNode(true);
         let placeName = card.querySelector('.element__name');
         let placePhoto = card.querySelector('.element__photo');
+        let like = card.querySelector('.button_heart');
         placeName.textContent = item.name;
         placePhoto.setAttribute('src', item.link);
         placeContainer.append(card);
+        like.addEventListener('click', (evt) => {
+            const evtTarget = evt.target;
+            if(like.classList.contains('button_heart_active')){
+                evt.target.classList.remove('button_heart_active');
+            } else {
+                evt.target.classList.add('button_heart_active');
+            }
+        })
     });
 }
 
@@ -96,11 +114,20 @@ function addPlaceFormSubmit(evt) {
     let formValuePlaceName = placeFormAdd.elements.namePlace.value;
     let formValueLinkPhoto = placeFormAdd.elements.popupAddLinkToImageOfPlace.value;
     let card = createCard(formValuePlaceName, formValueLinkPhoto);
+    let like = card.querySelector('.button_heart');
+    like.addEventListener('click', (evt) => {
+        const evtTarget = evt.target;
+        if(like.classList.contains('button_heart_active')){
+            evt.target.classList.remove('button_heart_active');
+        } else {
+            evt.target.classList.add('button_heart_active');
+        }
+    })
     placeContainer.prepend(card);
     popupClose(popupAdd);
 }
 
-placeFormAdd.addEventListener('submit', addPlaceFormSubmit );
+placeFormAdd.addEventListener('submit', addPlaceFormSubmit);
 
 editButton.addEventListener('click', (event) => {
     let valueProfileName = profileName.innerHTML;
@@ -123,4 +150,9 @@ closeButtonEditForm.addEventListener('click', (event) => {
 //Listener of button which close a popup_add
 closeButtonAddForm.addEventListener('click', (event) => {
     popupClose(popupAdd);
+});
+
+//Listener of heartButton which is marked heart as liked
+heartButton.addEventListener('click', (event) => {
+
 });
