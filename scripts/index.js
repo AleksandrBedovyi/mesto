@@ -48,11 +48,8 @@ const placeCard = document
     .querySelector('.place-template')
     .content
     .querySelector('.element');
+const elementsOfPlaces = document.querySelector('.elements').children;
 
-    //function which set liked to heart button
-function likedHeart(button) {
-    button.classList.add('button_heart_active');
-}
 
 //function which open any popup
 function popupOpen(popup) {
@@ -62,6 +59,7 @@ function popupOpen(popup) {
 function popupClose(popup) {
     popup.classList.remove('popup_opened');
 }
+
 
 //function create card of place
 function createCard(name, photo) {
@@ -81,16 +79,21 @@ function renderCards() {
         let placeName = card.querySelector('.element__name');
         let placePhoto = card.querySelector('.element__photo');
         let like = card.querySelector('.button_heart');
+        let removeButton = card.querySelector('.button_remove');
         placeName.textContent = item.name;
         placePhoto.setAttribute('src', item.link);
         placeContainer.append(card);
         like.addEventListener('click', (evt) => {
-            const evtTarget = evt.target;
-            if(like.classList.contains('button_heart_active')){
+            //const evtTarget = evt.target;
+            if (like.classList.contains('button_heart_active')) {
                 evt.target.classList.remove('button_heart_active');
             } else {
                 evt.target.classList.add('button_heart_active');
             }
+        })
+        removeButton.addEventListener('click', (evt) => {
+            let elementForRemove = evt.target.parentElement;
+            elementForRemove.remove();
         })
     });
 }
@@ -115,9 +118,10 @@ function addPlaceFormSubmit(evt) {
     let formValueLinkPhoto = placeFormAdd.elements.popupAddLinkToImageOfPlace.value;
     let card = createCard(formValuePlaceName, formValueLinkPhoto);
     let like = card.querySelector('.button_heart');
+    let removeButton = card.querySelector('.button_remove');
     like.addEventListener('click', (evt) => {
-        const evtTarget = evt.target;
-        if(like.classList.contains('button_heart_active')){
+        //const evtTarget = evt.target;
+        if (like.classList.contains('button_heart_active')) {
             evt.target.classList.remove('button_heart_active');
         } else {
             evt.target.classList.add('button_heart_active');
@@ -125,6 +129,10 @@ function addPlaceFormSubmit(evt) {
     })
     placeContainer.prepend(card);
     popupClose(popupAdd);
+    removeButton.addEventListener('click', (evt) => {
+        let elementForRemove = evt.target.parentElement;
+        elementForRemove.remove();
+    })
 }
 
 placeFormAdd.addEventListener('submit', addPlaceFormSubmit);
@@ -150,9 +158,4 @@ closeButtonEditForm.addEventListener('click', (event) => {
 //Listener of button which close a popup_add
 closeButtonAddForm.addEventListener('click', (event) => {
     popupClose(popupAdd);
-});
-
-//Listener of heartButton which is marked heart as liked
-heartButton.addEventListener('click', (event) => {
-
 });
