@@ -33,7 +33,6 @@
     <footer class="footer">
         <p class="footer__text">&#169;2020 Mesto Russia</p>
     </footer>
-
     <div class="popup popup_edit">
         <div class="popup__content">
             <button class="button button_close button_close-edit" type="button"></button>
@@ -47,7 +46,6 @@
             </form>
         </div>
     </div>
-
     <div class="popup popup_add">
         <div class="popup__content">
             <button class="button button_close button_close-add" type="button"></button>
@@ -61,6 +59,14 @@
             </form>
         </div>
     </div>
+    <div class="popup popup_view">
+        <div class="popup__content popup__content_view">
+            <button class="button button_close button_close-view" type="button"></button>
+            <img class="popup__image" src="" alt="Изображение места">
+            <h2 class="popup__name"></h2>
+            <div class="popup__content"></div>
+        </div>
+    </div>
     <template class="place-template">
         <div class="element">
             <button class="button button_remove" type="button"></button>
@@ -69,10 +75,8 @@
                 <h2 class="element__name"></h2>
                 <button class="button button_heart" type="button"></button>
             </div>
-
         </div>
     </template>
-
     <script src="./scripts/index.js"></script>
 </body>
 
