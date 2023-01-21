@@ -1,0 +1,9 @@
+.popup__header_position-left{
+    margin-left: 36px;
+}
+
+@media screen and (max-width: 600px) {
+    .popup__header_position-left{
+        margin-left: 22px;
+    }
+}
