@@ -1,6 +1,7 @@
 .button_remove {
     background-image: url(../../../images/button/removeButton.png);
     background-repeat: no-repeat;
+    background-color: #FFFFFF;
     background-color: transparent;
     height: 19px;
     width: 18px;
@@ -8,6 +9,5 @@
     position: absolute;
     right: 20px;
     top: 20px;
-    background-color: #FFFFFF;
-    background-color: transparent;
+
 }

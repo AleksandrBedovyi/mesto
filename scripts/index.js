@@ -57,8 +57,7 @@ function popupViewSetAttribute(name, image) {
     let photo = popupView.querySelector('.popup__image');
     photo.setAttribute('src', image)
     let nameTextContent = popupView.querySelector('.popup__name');
-    nameTextContent.textContent= name;
-    console.log(nameTextContent);
+    nameTextContent.textContent = name;
 }
 
 //function which open any popup
@@ -106,7 +105,6 @@ function renderCards() {
         placePhoto.addEventListener('click', (evt) => {
             let valuePlaceName = placeName.textContent;
             let valuePlaceImage = placePhoto.getAttribute('src');
-            console.log(valuePlaceName, valuePlaceImage);
             popupViewSetAttribute(valuePlaceName, valuePlaceImage);
             popupOpen(popupView);
         });
