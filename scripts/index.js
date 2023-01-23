@@ -1,63 +1,33 @@
-//Initializing variables
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-const editButton = document.querySelector('.button_edit');
-const addButton = document.querySelector('.button_add');
-const heartButton = document
-    .querySelector('.place-template')
-    .content
-    .querySelector('.button_heart');
-const popupEdit = document.querySelector('.popup_edit');
-const popupAdd = document.querySelector('.popup_add');
-const popupView = document.querySelector('.popup_view');
-const closeButtonEditForm = document.querySelector('.button_close-edit');
-const closeButtonAddForm = document.querySelector('.button_close-add');
-const closeButtonViewForm = document.querySelector('.button_close-view');
+const buttonEdit = document.querySelector('.button_edit');
+const buttonAdd = document.querySelector('.button_add');
+const popupProfileEdit = document.querySelector('.popup_edit');
+const popupPlaceAdd = document.querySelector('.popup_add');
+const popupPlaceImageView = document.querySelector('.popup_view');
+const imageOfPopupView = popupPlaceImageView.querySelector('.popup__image');
+const nameOfPopupView = popupPlaceImageView.querySelector('.popup__name');
+const buttonClosePopupProfile = document.querySelector('.button_close-edit');
+const buttonClosePopupPlace = document.querySelector('.button_close-add');
+const buttonClosePopupView = document.querySelector('.button_close-view');
 const profileForm = document.querySelector('.popup__form');
 const placeFormAdd = document.querySelector('.popup__form_add');
-let profileName = document.querySelector('.profile__name');
-let profilePosition = document.querySelector('.profile__position');
-let formElements = document.forms.editProfileForm;
-let popupFieldName = formElements.elements.popupFormTextName;
-let popupFieldPosition = formElements.elements.popupFormTextPosition;
+const profileName = document.querySelector('.profile__name');
+const profilePosition = document.querySelector('.profile__position');
+const formElements = document.forms.editProfileForm;
+const popupFieldName = formElements.elements.popupFormTextName;
+const popupFieldPosition = formElements.elements.popupFormTextPosition;
 const placeContainer = document.querySelector('.elements');
 const placeCard = document
     .querySelector('.place-template')
     .content
     .querySelector('.element');
-const elementsOfPlaces = document.querySelector('.elements').children;
+
+
 
 //function set image and text for popupview
 function popupViewSetAttribute(name, image) {
-    let photo = popupView.querySelector('.popup__image');
-    photo.setAttribute('src', image)
-    let nameTextContent = popupView.querySelector('.popup__name');
-    nameTextContent.textContent = name;
+    imageOfPopupView.setAttribute('src', image);
+    imageOfPopupView.setAttribute('alt', `Фото ${name}`)
+    nameOfPopupView.textContent = name;
 }
 
 //function which open any popup
@@ -72,42 +42,48 @@ function popupClose(popup) {
 //function create card of place
 function createCard(name, photo) {
     const card = placeCard.cloneNode(true);
-    let placeName = card.querySelector('.element__name');
-    let placePhoto = card.querySelector('.element__photo');
+    const placeName = card.querySelector('.element__name');
+    const placePhoto = card.querySelector('.element__photo');
+    const buttonLiked = card.querySelector('.button_heart');
+    const buttonRemove = card.querySelector('.button_remove');
     placeName.textContent = name;
     placePhoto.setAttribute('src', photo);
+    buttonLiked.addEventListener('click', likedCard);
+    buttonRemove.addEventListener('click', removeCard);
+    placePhoto.addEventListener('click', (evt) => {
+        const valuePlaceName = placeName.textContent;
+        const valuePlaceImage = placePhoto.getAttribute('src');
+        popupViewSetAttribute(valuePlaceName, valuePlaceImage);
+        popupOpen(popupPlaceImageView);
+    });
 
     return card;
+}
+
+//function liked card
+function likedCard(evt) {
+    evt.target.classList.toggle('button_heart_active');
+}
+
+//function remove card
+function removeCard(evt) {
+    const elementForRemove = evt.target.parentElement;
+    elementForRemove.remove();
+}
+
+//function open popup view
+function openImage(evt) {
+    const valuePlaceName = card.querySelector('.element__name').textContent;
+    const valuePlaceImage = card.querySelector('.element__photo').getAttribute('src');
+    popupViewSetAttribute(valuePlaceName, valuePlaceImage);
+    popupOpen(popupPlaceImageView);
 }
 
 //function render cards of places .elements
 function renderCards() {
     initialCards.forEach(item => {
-        const card = placeCard.cloneNode(true);
-        let placeName = card.querySelector('.element__name');
-        let placePhoto = card.querySelector('.element__photo');
-        let like = card.querySelector('.button_heart');
-        let removeButton = card.querySelector('.button_remove');
-        placeName.textContent = item.name;
-        placePhoto.setAttribute('src', item.link);
-        placeContainer.append(card);
-        like.addEventListener('click', (evt) => {
-            if (like.classList.contains('button_heart_active')) {
-                evt.target.classList.remove('button_heart_active');
-            } else {
-                evt.target.classList.add('button_heart_active');
-            }
-        });
-        removeButton.addEventListener('click', (evt) => {
-            let elementForRemove = evt.target.parentElement;
-            elementForRemove.remove();
-        });
-        placePhoto.addEventListener('click', (evt) => {
-            let valuePlaceName = placeName.textContent;
-            let valuePlaceImage = placePhoto.getAttribute('src');
-            popupViewSetAttribute(valuePlaceName, valuePlaceImage);
-            popupOpen(popupView);
-        });
+        const createdCard = createCard(item.name, item.link);
+        placeContainer.append(createdCard);
     });
 }
 
@@ -116,71 +92,50 @@ renderCards();
 //handler submit of edit form (profile form)
 function profileFormSubmit(evt) {
     evt.preventDefault();
-    let valuePopupFieldName = popupFieldName.value;
-    let valuePopupFieldPosition = popupFieldPosition.value;
+    const valuePopupFieldName = popupFieldName.value;
+    const valuePopupFieldPosition = popupFieldPosition.value;
     profileName.textContent = `${valuePopupFieldName}`;
     profilePosition.textContent = `${valuePopupFieldPosition}`;
-    popupClose(popupEdit);
+    popupClose(popupProfileEdit);
 }
 
 profileForm.addEventListener('submit', profileFormSubmit);
 
 function addPlaceFormSubmit(evt) {
     evt.preventDefault();
-    let formValuePlaceName = placeFormAdd.elements.namePlace.value;
-    let formValueLinkPhoto = placeFormAdd.elements.popupAddLinkToImageOfPlace.value;
-    let card = createCard(formValuePlaceName, formValueLinkPhoto);
-    let placeName = card.querySelector('.element__name');
-    let placePhoto = card.querySelector('.element__photo');
-    let like = card.querySelector('.button_heart');
-    let removeButton = card.querySelector('.button_remove');
-    like.addEventListener('click', (evt) => {
-        if (like.classList.contains('button_heart_active')) {
-            evt.target.classList.remove('button_heart_active');
-        } else {
-            evt.target.classList.add('button_heart_active');
-        }
-    });
+    const formValuePlaceName = placeFormAdd.elements.namePlace.value;
+    const formValueLinkPhoto = placeFormAdd.elements.popupAddLinkToImageOfPlace.value;
+    const card = createCard(formValuePlaceName, formValueLinkPhoto);
     placeContainer.prepend(card);
-    popupClose(popupAdd);
-    removeButton.addEventListener('click', (evt) => {
-        let elementForRemove = evt.target.parentElement;
-        elementForRemove.remove();
-    });
-    placePhoto.addEventListener('click', (evt) => {
-        let valuePlaceName = placeName.textContent;
-        let valuePlaceImage = placePhoto.getAttribute('src');
-        console.log(valuePlaceName, valuePlaceImage);
-        popupViewSetAttribute(valuePlaceName, valuePlaceImage);
-        popupOpen(popupView);
-    });
+    popupClose(popupPlaceAdd);
+    evt.target.reset();
 }
 
 placeFormAdd.addEventListener('submit', addPlaceFormSubmit);
 
-editButton.addEventListener('click', (event) => {
-    let valueProfileName = profileName.innerHTML;
-    let valueProfilePosition = profilePosition.innerHTML;
-    popupOpen(popupEdit);
+buttonEdit.addEventListener('click', (event) => {
+    const valueProfileName = profileName.textContent;
+    const valueProfilePosition = profilePosition.textContent;
+    popupOpen(popupProfileEdit);
     popupFieldName.value = `${valueProfileName}`;
     popupFieldPosition.value = `${valueProfilePosition}`;
 });
 
 //Listener of button which add a place
-addButton.addEventListener('click', (event) => {
-    popupOpen(popupAdd);
+buttonAdd.addEventListener('click', (event) => {
+    popupOpen(popupPlaceAdd);
 });
 
 //Listener of button which close a popup_edit
-closeButtonEditForm.addEventListener('click', (event) => {
-    popupClose(popupEdit);
+buttonClosePopupProfile.addEventListener('click', (event) => {
+    popupClose(popupProfileEdit);
 });
 
 //Listener of button which close a popup_add
-closeButtonAddForm.addEventListener('click', (event) => {
-    popupClose(popupAdd);
+buttonClosePopupPlace.addEventListener('click', (event) => {
+    popupClose(popupPlaceAdd);
 });
 
-closeButtonViewForm.addEventListener('click', (event) => {
-    popupClose(popupView);
+buttonClosePopupView.addEventListener('click', (event) => {
+    popupClose(popupPlaceImageView);
 });
