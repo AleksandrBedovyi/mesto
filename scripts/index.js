@@ -71,14 +71,6 @@ function removeCard(evt) {
     elementForRemove.remove();
 }
 
-//function open popup view
-function openImage(evt) {
-    const valuePlaceName = card.querySelector('.element__name').textContent;
-    const valuePlaceImage = card.querySelector('.element__photo').getAttribute('src');
-    popupViewSetAttribute(valuePlaceName, valuePlaceImage);
-    popupOpen(popupPlaceImageView);
-}
-
 //function render cards of places .elements
 function renderCards() {
     initialCards.forEach(item => {
