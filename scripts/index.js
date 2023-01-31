@@ -21,8 +21,6 @@ const placeCard = document
     .content
     .querySelector('.element');
 
-
-
 //function set image and text for popupview
 function popupViewSetAttribute(name, image) {
     imageOfPopupView.setAttribute('src', image);

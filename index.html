@@ -37,11 +37,13 @@
         <div class="popup__content">
             <button class="button button_close button_close-edit" type="button"></button>
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form class="popup__form" action="#" name="editProfileForm">
-                <input class="popup__field" type="text" name="popupFormTextName" required placeholder="Имя"
-                    autocomplete="off">
-                <input class="popup__field" type="text" name="popupFormTextPosition" required placeholder="Позиция"
-                    autocomplete="off">
+            <form class="form popup__form" action="#" name="editProfileForm" novalidate>
+                <input id="profile-name" class="popup__field" type="text" name="popupFormTextName" required placeholder="Имя"
+                    autocomplete="off" minlength="2" maxlength="40">
+                <span class="name-input-error form__input-error"></span>  
+                <input id="profile-position" class="popup__field" type="text" name="popupFormTextPosition" required placeholder="Позиция"
+                    autocomplete="off" minlength="2" maxlength="200">
+                <span class="position-input-error form__input-error"></span>
                 <button class="button button_save" type="submit">Сохранить</button>
             </form>
         </div>
@@ -50,11 +52,13 @@
         <div class="popup__content">
             <button class="button button_close button_close-add" type="button"></button>
             <h2 class="popup__header popup__header_position-left">Новое место</h2>
-            <form class="popup__form popup__form_add" action="#" name="addPlaceForm">
-                <input class="popup__field" type="text" name="namePlace" required placeholder="Название"
+            <form class="form popup__form popup__form_add" action="#" name="addPlaceForm" novalidate>
+                <input id="place-name" class="popup__field" type="text" name="namePlace" required placeholder="Название"
                     autocomplete="off">
-                <input class="popup__field" type="url" name="popupAddLinkToImageOfPlace" required
+                <span class="place-input-error form__input-error"></span>
+                <input id="place-link" class="popup__field" type="url" name="popupAddLinkToImageOfPlace" required
                     placeholder="Ссылка на картинку" autocomplete="off">
+                <span class="link-input-error form__input-error"></span>
                 <button class="button button_save" type="submit">Создать</button>
             </form>
         </div>
@@ -79,6 +83,7 @@
     </template>
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
