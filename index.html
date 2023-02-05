@@ -40,10 +40,10 @@
             <form class="form popup__form" action="#" name="editProfileForm" novalidate>
                 <input id="profile-name" class="popup__field" type="text" name="popupFormTextName" required placeholder="Имя"
                     autocomplete="off" minlength="2" maxlength="40">
-                <span class="name-input-error form__input-error"></span>  
+                <span class="profile-name-error form__input-error"></span>  
                 <input id="profile-position" class="popup__field" type="text" name="popupFormTextPosition" required placeholder="Позиция"
                     autocomplete="off" minlength="2" maxlength="200">
-                <span class="position-input-error form__input-error"></span>
+                <span class="profile-position-error form__input-error"></span>
                 <button class="button button_save" type="submit">Сохранить</button>
             </form>
         </div>
@@ -55,10 +55,10 @@
             <form class="form popup__form popup__form_add" action="#" name="addPlaceForm" novalidate>
                 <input id="place-name" class="popup__field" type="text" name="namePlace" required placeholder="Название"
                     autocomplete="off" minlength="2" maxlength="30">
-                <span class="place-input-error form__input-error"></span>
+                <span class="place-name-error form__input-error form__input-error_active"></span>
                 <input id="place-link" class="popup__field" type="url" name="popupAddLinkToImageOfPlace" required
                     placeholder="Ссылка на картинку" autocomplete="off">
-                <span class="link-input-error form__input-error"></span>
+                <span class="place-link-error form__input-error"></span>
                 <button class="button button_save" type="submit">Создать</button>
             </form>
         </div>
