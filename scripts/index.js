@@ -20,6 +20,7 @@ const placeCard = document
     .querySelector('.place-template')
     .content
     .querySelector('.element');
+const popups = document.querySelectorAll('.popup');
 
 //function set image and text for popupview
 function popupViewSetAttribute(name, image) {
@@ -28,14 +29,17 @@ function popupViewSetAttribute(name, image) {
     nameOfPopupView.textContent = name;
 }
 
-//function which open any popup
+//function which open any popup (add class)
 function popupOpen(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keyup', isEscape);
 }
-//function which close any popup
+//function which close any popup (remove class)
 function popupClose(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keyup', isEscape);
 }
+
 
 //function create card of place
 function createCard(name, photo) {
@@ -121,7 +125,7 @@ buttonClosePopupProfile.addEventListener('click', (event) => {
     popupClose(popupProfileEdit);
 });
 
-//Listener of button which close a popup_add
+//Listeners of button which close a popup_add
 buttonClosePopupPlace.addEventListener('click', (event) => {
     popupClose(popupPlaceAdd);
 });
@@ -129,3 +133,23 @@ buttonClosePopupPlace.addEventListener('click', (event) => {
 buttonClosePopupView.addEventListener('click', (event) => {
     popupClose(popupPlaceImageView);
 });
+
+
+popups.forEach((popup) => {
+    popup.addEventListener('click', (event) => {
+        if (event.target.classList.contains('popup')) {
+            popupClose(popup);
+        }
+    })
+});
+
+
+const isEscape = (evt) => {
+    evt.preventDefault();
+    if (evt.key === 'Escape') {
+        const activePopup = document.querySelector('.popup_opened');
+        popupClose(activePopup);
+    };
+};
+
+
